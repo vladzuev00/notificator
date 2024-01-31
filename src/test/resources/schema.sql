@@ -38,11 +38,6 @@ CREATE TABLE notification_source
     updated         TIMESTAMP(0)                NOT NULL DEFAULT timezone('UTC', now())
 );
 
-ALTER TABLE notification_source
-    ADD CONSTRAINT fk_notification_source_to_user
-        FOREIGN KEY (user_id)
-            REFERENCES iuser (id);
-
 CREATE TYPE unit_status AS ENUM ('ACTIVE', 'DISABLED');
 
 CREATE TABLE unit
@@ -82,11 +77,6 @@ CREATE TABLE geofence
     boundaries  GEOMETRY,
     CONSTRAINT unique_user_id_name UNIQUE (user_id, name)
 );
-
-ALTER TABLE geofence
-    ADD CONSTRAINT fk_geogence_to_user
-        FOREIGN KEY (user_id)
-            REFERENCES iuser (id);
 
 CREATE TABLE notification_source_geofence
 (
@@ -144,11 +134,6 @@ CREATE TABLE telegram
     language                 VARCHAR(3)   NOT NULL DEFAULT 'ru',
     created                  TIMESTAMP(0) NOT NULL DEFAULT timezone('UTC', now())
 );
-
-ALTER TABLE telegram
-    ADD CONSTRAINT fk_telegram_to_user
-        FOREIGN KEY (user_id)
-            REFERENCES iuser (id);
 
 CREATE TABLE notification_source_telegram
 (

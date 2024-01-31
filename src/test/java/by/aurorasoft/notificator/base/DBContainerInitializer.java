@@ -11,6 +11,10 @@ import java.util.Map;
 import static org.testcontainers.utility.DockerImageName.parse;
 
 public final class DBContainerInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+    private static final String TEST_PROPERTY_KEY_DATASOURCE_URL = "spring.datasource.url";
+    private static final String TEST_PROPERTY_KEY_USERNAME = "spring.datasource.username";
+    private static final String TEST_PROPERTY_KEY_PASSWORD = "spring.datasource.password";
+
     private static final String FULL_IMAGE_NAME = "mdillon/postgis:9.5";
     private static final String OTHER_IMAGE_NAME = "postgres";
     private static final DockerImageName DOCKER_IMAGE_NAME = parse(FULL_IMAGE_NAME)
@@ -26,21 +30,18 @@ public final class DBContainerInitializer implements ApplicationContextInitializ
             .withUsername(USERNAME)
             .withPassword(PASSWORD);
 
-    private static final String TEST_PROPERTY_KEY_DATASOURCE_URL = "spring.datasource.url";
-    private static final String TEST_PROPERTY_KEY_USERNAME = "spring.datasource.username";
-    private static final String TEST_PROPERTY_KEY_PASSWORD = "spring.datasource.password";
-    private static final Map<String, String> TEST_PROPERTY_VALUES_BY_KEYS = Map.of(
-            TEST_PROPERTY_KEY_DATASOURCE_URL, POSTGRE_SQL_CONTAINER.getJdbcUrl(),
-            TEST_PROPERTY_KEY_USERNAME, POSTGRE_SQL_CONTAINER.getUsername(),
-            TEST_PROPERTY_KEY_PASSWORD, POSTGRE_SQL_CONTAINER.getPassword()
-    );
-
     static {
         POSTGRE_SQL_CONTAINER.start();
     }
 
     @Override
     public void initialize(final ConfigurableApplicationContext context) {
-        TestPropertyValues.of(TEST_PROPERTY_VALUES_BY_KEYS).applyTo(context.getEnvironment());
+        TestPropertyValues.of(
+                Map.of(
+                        TEST_PROPERTY_KEY_DATASOURCE_URL, POSTGRE_SQL_CONTAINER.getJdbcUrl(),
+                        TEST_PROPERTY_KEY_USERNAME, POSTGRE_SQL_CONTAINER.getUsername(),
+                        TEST_PROPERTY_KEY_PASSWORD, POSTGRE_SQL_CONTAINER.getPassword()
+                )
+        ).applyTo(context.getEnvironment());
     }
 }

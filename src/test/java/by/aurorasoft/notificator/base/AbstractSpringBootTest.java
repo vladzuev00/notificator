@@ -1,5 +1,6 @@
 package by.aurorasoft.notificator.base;
 
+import by.aurorasoft.notificator.ApplicationRunner;
 import com.yannbriancon.interceptor.HibernateQueryInterceptor;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -8,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +30,7 @@ public abstract class AbstractSpringBootTest {
     protected EntityManager entityManager;
 
     @Autowired
-    protected HibernateQueryInterceptor queryInterceptor;
+    private HibernateQueryInterceptor queryInterceptor;
 
     @BeforeClass
     public static void setDefaultTimeZone() {
@@ -40,13 +42,10 @@ public abstract class AbstractSpringBootTest {
         queryInterceptor.startQueryCount();
     }
 
-    protected final Long getQueryCount() {
-        return queryInterceptor.getQueryCount();
-    }
-
     protected final void checkQueryCount(final long expected) {
         entityManager.flush();
         log.info("======================= FINISH QUERY COUNTER ====================================");
-        assertEquals("wrong count of queries", Long.valueOf(expected), getQueryCount());
+        assertEquals("wrong count of queries", Long.valueOf(expected), queryInterceptor.getQueryCount());
     }
+
 }
