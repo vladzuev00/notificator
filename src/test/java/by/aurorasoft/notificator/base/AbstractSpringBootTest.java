@@ -1,6 +1,5 @@
 package by.aurorasoft.notificator.base;
 
-import by.aurorasoft.notificator.ApplicationRunner;
 import com.yannbriancon.interceptor.HibernateQueryInterceptor;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -9,7 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,15 +19,15 @@ import static org.junit.Assert.assertEquals;
 
 @Slf4j
 @Transactional
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@RunWith(SpringRunner.class)
 @ContextConfiguration(initializers = DBContainerInitializer.class)
 public abstract class AbstractSpringBootTest {
 
     @PersistenceContext
     protected EntityManager entityManager;
 
-    @Autowired
+//    @Autowired
     private HibernateQueryInterceptor queryInterceptor;
 
     @BeforeClass

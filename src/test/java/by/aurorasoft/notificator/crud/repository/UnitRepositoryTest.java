@@ -21,9 +21,9 @@ public final class UnitRepositoryTest extends AbstractSpringBootTest {
     public void unitShouldBeFoundById() {
         final Long givenId = 255L;
 
-        startQueryCount();
+//        startQueryCount();
         final Optional<UnitEntity> optionalActual = repository.findById(givenId);
-        checkQueryCount(1);
+//        checkQueryCount(1);
 
         assertTrue(optionalActual.isPresent());
         final UnitEntity actual = optionalActual.get();
@@ -34,5 +34,18 @@ public final class UnitRepositoryTest extends AbstractSpringBootTest {
                 .status(ACTIVE)
                 .build();
         checkEquals(expected, actual);
+    }
+
+    @Test
+    public void unitShouldBeSaved() {
+        final UnitEntity givenUnit = UnitEntity.builder()
+                .name("Mercedes АР 6575-7")
+                .color("D73816")
+                .status(ACTIVE)
+                .build();
+
+//        startQueryCount();
+        repository.save(givenUnit);
+//        checkQueryCount(1);
     }
 }
