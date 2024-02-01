@@ -1,19 +1,19 @@
 package by.aurorasoft.notificator.crud.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.locationtech.jts.geom.Geometry;
 
-import javax.persistence.*;
-
-import static javax.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 import static org.hibernate.annotations.CacheConcurrencyStrategy.READ_WRITE;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
+@Builder
 @Entity
 @Cacheable
 @Table(name = "geofence")
@@ -38,7 +38,7 @@ public class GeofenceEntity extends AbstractEntity<Long> {
     private int maxSpeed;
 
     @Column(name = "user_id")
-    private Long userId;
+    private long userId;
 
     @Column(name = "boundaries")
     private Geometry boundaries;
