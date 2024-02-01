@@ -1,1 +1,14 @@
-
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/notification
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: true
+        jdbc:
+          batch_size: 500
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    show-sql: true
