@@ -42,11 +42,11 @@ CREATE TYPE unit_status AS ENUM ('ACTIVE', 'DISABLED');
 
 CREATE TABLE unit
 (
-    id     INTEGER PRIMARY KEY,
-    name   VARCHAR     NOT NULL,
-    color  VARCHAR(7)  NOT NULL,
-    status unit_status NOT NULL,
-    deleted BOOLEAN NOT NULL DEFAULT FALSE
+    id      INTEGER PRIMARY KEY,
+    name    VARCHAR     NOT NULL,
+    color   VARCHAR(7)  NOT NULL,
+    status  unit_status NOT NULL,
+    deleted BOOLEAN     NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE notification_source_unit
@@ -99,26 +99,26 @@ ALTER TABLE notification_source_geofence
 
 CREATE TYPE notification_status AS ENUM('COMPLETED', 'ACTIVE', 'PENDING', 'CANCELLED', 'DELETED');
 
-CREATE TABLE notification_statistic
+CREATE TABLE notification
 (
-    id                     BIGSERIAL PRIMARY KEY,
-    notification_source_id BIGINT              NOT NULL,
-    unit_id                INTEGER             NOT NULL,
-    start_time             TIMESTAMP(0)        NOT NULL,
-    finish_time            TIMESTAMP(0),
-    status                 notification_status NOT NULL,
-    is_read                BOOLEAN             NOT NULL DEFAULT false,
-    created_time           TIMESTAMP(0)                 DEFAULT timezone('UTC', now()),
-    updated_time           TIMESTAMP(0)                 DEFAULT timezone('UTC', now())
+    id           BIGSERIAL PRIMARY KEY,
+    source_id    BIGINT              NOT NULL,
+    unit_id      INTEGER             NOT NULL,
+    start_time   TIMESTAMP(0)        NOT NULL,
+    finish_time  TIMESTAMP(0),
+    status       notification_status NOT NULL,
+    is_read      BOOLEAN             NOT NULL DEFAULT false,
+    created_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now()),
+    updated_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now())
 );
 
-ALTER TABLE notification_statistic
-    ADD CONSTRAINT fk_notification_statistic_to_notification_source
-        FOREIGN KEY (notification_source_id)
+ALTER TABLE notification
+    ADD CONSTRAINT fk_notification_to_notification_source
+        FOREIGN KEY (source_id)
             REFERENCES notification_source (id);
 
-ALTER TABLE notification_statistic
-    ADD CONSTRAINT fk_notification_statistic_to_unit
+ALTER TABLE notification
+    ADD CONSTRAINT fk_notification_to_unit
         FOREIGN KEY (unit_id)
             REFERENCES unit (id);
 
