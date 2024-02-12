@@ -2,7 +2,6 @@ package by.aurorasoft.notificator.crud.repository;
 
 import by.aurorasoft.notificator.base.AbstractSpringBootTest;
 import by.aurorasoft.notificator.crud.entity.GeofenceEntity;
-import by.aurorasoft.notificator.repository.GeofenceRepository;
 import org.junit.Test;
 import org.locationtech.jts.geom.CoordinateXY;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -12,6 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 import java.util.Optional;
 
 import static by.aurorasoft.notificator.util.GeofenceEntityUtil.checkEquals;
+import static io.hypersistence.utils.jdbc.validator.SQLStatementCountValidator.*;
 import static org.junit.Assert.assertTrue;
 
 public final class GeofenceRepositoryTest extends AbstractSpringBootTest {
@@ -27,9 +27,9 @@ public final class GeofenceRepositoryTest extends AbstractSpringBootTest {
     public void geofenceShouldBeFoundById() {
         final Long givenId = 3L;
 
-        //TODO        reset();
+        reset();
         final Optional<GeofenceEntity> optionalActual = repository.findById(givenId);
-        //TODO       assertSelectCount(1);
+        assertSelectCount(1);
 
         assertTrue(optionalActual.isPresent());
         final GeofenceEntity actual = optionalActual.get();
@@ -76,8 +76,8 @@ public final class GeofenceRepositoryTest extends AbstractSpringBootTest {
                 )
                 .build();
 
-        //TODO        reset();
+        reset();
         repository.save(givenGeofence);
-        //TODO        assertInsertCount(1);
+        assertInsertCount(1);
     }
 }

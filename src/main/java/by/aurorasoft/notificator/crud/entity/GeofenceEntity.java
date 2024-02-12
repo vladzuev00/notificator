@@ -1,18 +1,19 @@
 package by.aurorasoft.notificator.crud.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.locationtech.jts.geom.Geometry;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static org.hibernate.annotations.CacheConcurrencyStrategy.READ_WRITE;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 @ToString
+@Builder
 @Entity
 @Table(name = "geofence")
 @Cacheable
