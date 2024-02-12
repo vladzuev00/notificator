@@ -22,7 +22,7 @@ import static org.hibernate.type.SqlTypes.NAMED_ENUM;
 @Cacheable
 @Cache(usage = READ_WRITE)
 @SQLRestriction("deleted = false")
-public class UnitEntity {
+public class UnitEntity extends AbstractEntity<Long> {
 
     @Id
     @Column(name = "id")
