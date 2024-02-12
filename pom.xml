@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.github.NikolayNN.crud-generic</groupId>
             <artifactId>crud-abstract-generic</artifactId>
-            <version>10.2</version>
+            <version>12.5-jakarta</version>
         </dependency>
 
         <dependency>
@@ -93,6 +93,12 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-properties-migrator</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -116,6 +122,12 @@
             <artifactId>datasource-proxy</artifactId>
             <version>1.10</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>db-util</artifactId>
+            <version>1.0.7</version>
         </dependency>
 
     </dependencies>
