@@ -21,6 +21,7 @@ public class TelegramChatEntity {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "user_id")
@@ -32,15 +33,15 @@ public class TelegramChatEntity {
     @Column(name = "is_activated")
     private boolean activated;
 
+    @Column(name = "created")
+    private Instant created = now();
+
     @ToString.Exclude
     @ManyToMany(mappedBy = "telegramChats")
     private List<NotificationSourceEntity> notificationSources;
 
-    @Column(name = "created")
-    private Instant created = now();
-
     @PreRemove
-    public void preRemove(){
+    public void preRemove() {
         notificationSources.forEach(s -> s.getTelegramChats().remove(this));
     }
 
@@ -48,6 +49,7 @@ public class TelegramChatEntity {
     @AllArgsConstructor
     @Setter
     @Getter
+    @EqualsAndHashCode
     @ToString
     @Builder
     @Embeddable
@@ -55,10 +57,10 @@ public class TelegramChatEntity {
         private static final String DEFAULT_LANGUAGE = "ru";
 
         @Column(name = "telegram_user_id")
-        private Long id;
+        private long id;
 
         @Column(name = "telegram_chat_id")
-        private Long chatId;
+        private long chatId;
 
         @Column(name = "telegram_user_first_name")
         private String firstName;

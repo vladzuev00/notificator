@@ -19,8 +19,8 @@ public class TelegramChat implements AbstractDto<Long> {
     @AllArgsConstructor
     @Builder
     public static class TelegramUser {
-        Long id;
-        Long chatId;
+        long id;
+        long chatId;
         String firstName;
         String lastName;
         String username;
