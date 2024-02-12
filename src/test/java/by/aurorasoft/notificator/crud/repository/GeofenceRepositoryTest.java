@@ -58,6 +58,7 @@ public final class GeofenceRepositoryTest extends AbstractSpringBootTest {
     @Test
     public void geofenceShouldBeSaved() {
         final GeofenceEntity givenGeofence = GeofenceEntity.builder()
+                .id(255L)
                 .name("test-geo10.0")
                 .description("description10.0")
                 .color("#111111")

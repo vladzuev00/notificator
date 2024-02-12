@@ -42,10 +42,11 @@ CREATE TYPE unit_status AS ENUM ('ACTIVE', 'DISABLED');
 
 CREATE TABLE unit
 (
-    id     SERIAL PRIMARY KEY,
+    id     INTEGER PRIMARY KEY,
     name   VARCHAR     NOT NULL,
-    color  VARCHAR(7)           DEFAULT '#2b8cf7',
-    status unit_status NOT NULL DEFAULT 'ACTIVE'
+    color  VARCHAR(7)  NOT NULL,
+    status unit_status NOT NULL,
+    deleted BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE notification_source_unit
@@ -68,11 +69,11 @@ ALTER TABLE notification_source_unit
 
 CREATE TABLE geofence
 (
-    id          SERIAL PRIMARY KEY,
+    id          INTEGER PRIMARY KEY,
     name        VARCHAR    NOT NULL,
     description VARCHAR(256),
-    color       VARCHAR(7) NOT NULL default '#3ec78e',
-    max_speed   INTEGER    NOT NULL default 0,
+    color       VARCHAR(7) NOT NULL,
+    max_speed   INTEGER    NOT NULL,
     user_id     BIGINT     NOT NULL,
     boundaries  GEOMETRY,
     CONSTRAINT unique_user_id_name UNIQUE (user_id, name)
