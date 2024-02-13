@@ -69,14 +69,8 @@ ALTER TABLE notification_source_unit
 
 CREATE TABLE geofence
 (
-    id          INTEGER PRIMARY KEY,
-    name        VARCHAR    NOT NULL,
-    description VARCHAR(256),
-    color       VARCHAR(7) NOT NULL,
-    max_speed   INTEGER    NOT NULL,
-    user_id     BIGINT     NOT NULL,
-    boundaries  GEOMETRY,
-    CONSTRAINT unique_user_id_name UNIQUE (user_id, name)
+    id       INTEGER PRIMARY KEY,
+    geometry GEOMETRY NOT NULL
 );
 
 CREATE TABLE notification_source_geofence
@@ -101,15 +95,15 @@ CREATE TYPE notification_status AS ENUM('COMPLETED', 'ACTIVE', 'PENDING', 'CANCE
 
 CREATE TABLE notification
 (
-    id           BIGSERIAL PRIMARY KEY,
-    source_id    BIGINT              NOT NULL,
-    unit_id      INTEGER             NOT NULL,
-    start_time   TIMESTAMP(0)        NOT NULL,
-    finish_time  TIMESTAMP(0),
-    status       notification_status NOT NULL,
-    is_read      BOOLEAN             NOT NULL DEFAULT false,
-    created_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now()),
-    updated_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now())
+    id          BIGSERIAL PRIMARY KEY,
+    source_id   BIGINT              NOT NULL,
+    unit_id     INTEGER             NOT NULL,
+    start_time  TIMESTAMP(0)        NOT NULL,
+    finish_time TIMESTAMP(0),
+    status      notification_status NOT NULL,
+    is_read     BOOLEAN             NOT NULL DEFAULT false,
+    create_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now()),
+    update_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now())
 );
 
 ALTER TABLE notification
