@@ -1,17 +1,26 @@
 package by.aurorasoft.notificator.crud.dto;
 
-import by.aurorasoft.notificator.model.UnitStatus;
 import by.nhorushko.crudgeneric.v2.domain.AbstractDto;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Value;
 
+import java.time.ZoneId;
+
 @Value
-@AllArgsConstructor
-@Builder
 public class Unit implements AbstractDto<Long> {
     Long id;
     String name;
-    String color;
-    UnitStatus status;
+    ZoneId ownerTZ;
+
+    @Builder
+    @JsonCreator
+    public Unit(@JsonProperty("id") final Long id,
+                @JsonProperty("name") final String name,
+                @JsonProperty("ownerTZ") final ZoneId ownerTZ) {
+        this.id = id;
+        this.name = name;
+        this.ownerTZ = ownerTZ;
+    }
 }

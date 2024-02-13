@@ -11,10 +11,5 @@ import org.locationtech.jts.geom.Geometry;
 @Builder
 public class Geofence implements AbstractDto<Long> {
     Long id;
-    String name;
-    String description;
-    String color;
-    int maxSpeed;
-    long userId;
-    Geometry boundaries;
+    Geometry geometry;
 }

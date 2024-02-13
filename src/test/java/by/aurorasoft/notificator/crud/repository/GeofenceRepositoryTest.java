@@ -23,7 +23,7 @@ public final class GeofenceRepositoryTest extends AbstractSpringBootTest {
     private GeometryFactory geometryFactory;
 
     @Test
-    @Sql("classpath:sql/insert-geofence.sql")
+    @Sql("classpath:sql/insert-geofences.sql")
     public void geofenceShouldBeFoundById() {
         final Long givenId = 3L;
 

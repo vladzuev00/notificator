@@ -65,7 +65,7 @@ public class NotificationSourceEntity extends AbstractEntity<Long> {
 
     @Column(name = "action_command")
     @JdbcTypeCode(JSON)
-    ActionCommand actionCommand;
+    NotificationSourceActionCommand actionCommand;
 
     @Column(name = "push_enabled")
     private boolean pushEnabled;

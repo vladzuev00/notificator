@@ -9,13 +9,13 @@ import java.io.Serializable;
 import static org.springframework.util.StringUtils.hasText;
 
 @Value
-public class ActionCommand implements Serializable {
+public class NotificationSourceActionCommand implements Serializable {
     Action activate;
     Action deactivate;
 
     @JsonCreator
-    public ActionCommand(@JsonProperty("activate") final Action activate,
-                         @JsonProperty("deactivate") final Action deactivate) {
+    public NotificationSourceActionCommand(@JsonProperty("activate") final Action activate,
+                                           @JsonProperty("deactivate") final Action deactivate) {
         this.activate = nullIfNoText(activate);
         this.deactivate = nullIfNoText(deactivate);
     }

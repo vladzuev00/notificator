@@ -1,6 +1,5 @@
 package by.aurorasoft.notificator.util;
 
-import by.aurorasoft.notificator.model.Range;
 import by.aurorasoft.notificator.model.Schedule;
 import lombok.experimental.UtilityClass;
 

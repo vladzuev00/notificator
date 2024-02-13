@@ -8,6 +8,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import java.time.Instant;
 
 import static jakarta.persistence.EnumType.STRING;
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static org.hibernate.type.SqlTypes.NAMED_ENUM;
 
@@ -26,11 +27,11 @@ public class NotificationEntity extends AbstractEntity<Long> {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "unit_id")
     private UnitEntity unit;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "notification_source_id")
     private NotificationSourceEntity source;
 
