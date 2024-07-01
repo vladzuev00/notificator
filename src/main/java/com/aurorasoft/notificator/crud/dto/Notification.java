@@ -1,7 +1,7 @@
 package com.aurorasoft.notificator.crud.dto;
 
-import com.aurorasoft.notificator.model.NotificationStatus;
 import by.nhorushko.crudgeneric.v2.domain.AbstractDto;
+import com.aurorasoft.notificator.model.NotificationStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;

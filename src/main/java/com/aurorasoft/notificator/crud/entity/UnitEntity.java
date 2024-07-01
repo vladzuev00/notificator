@@ -3,12 +3,10 @@ package com.aurorasoft.notificator.crud.entity;
 import com.aurorasoft.notificator.model.UnitStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.SQLRestriction;
 
 import static jakarta.persistence.EnumType.STRING;
-import static org.hibernate.annotations.CacheConcurrencyStrategy.READ_WRITE;
 import static org.hibernate.type.SqlTypes.NAMED_ENUM;
 
 @NoArgsConstructor
@@ -19,8 +17,6 @@ import static org.hibernate.type.SqlTypes.NAMED_ENUM;
 @Builder
 @Entity
 @Table(name = "unit")
-@Cacheable
-@Cache(usage = READ_WRITE)
 @SQLRestriction("deleted = false")
 public class UnitEntity extends AbstractEntity<Long> {
 

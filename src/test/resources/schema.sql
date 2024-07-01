@@ -1,6 +1,12 @@
 CREATE
 EXTENSION IF NOT EXISTS Postgis;
 
+CREATE TABLE time_zone
+(
+    id   INTEGER PRIMARY KEY,
+    name VARCHAR NOT NULL UNIQUE
+);
+
 CREATE TYPE notification_enabling_state AS ENUM ('ENABLE', 'DISABLE');
 CREATE TYPE notification_type AS ENUM ('SENSOR_RANGE_CONTROL', 'SENSOR_DIFF_CONTROL', 'SENSOR_NOT_VALID_CONTROL', 'MAX_SPEED_CONTROL',
     'LOW_BATTERY_CONTROL', 'POWER_OFF_CONTROL', 'TRIP_DETECT_CONTROL', 'PARKING_DETECT_CONTROL',
@@ -51,15 +57,15 @@ CREATE TABLE unit
 
 CREATE TABLE notification_source_unit
 (
-    notification_source_id BIGINT,
-    unit_id                INTEGER,
-    created                TIMESTAMP(0) NOT NULL DEFAULT timezone('UTC', now()),
-    CONSTRAINT pk_notification_source_unit PRIMARY KEY (notification_source_id, unit_id)
+    source_id BIGINT,
+    unit_id   INTEGER,
+    created   TIMESTAMP(0) NOT NULL DEFAULT timezone('UTC', now()),
+    CONSTRAINT pk_notification_source_unit PRIMARY KEY (source_id, unit_id)
 );
 
 ALTER TABLE notification_source_unit
     ADD CONSTRAINT fk_notification_source_unit_to_notification_source
-        FOREIGN KEY (notification_source_id)
+        FOREIGN KEY (source_id)
             REFERENCES notification_source (id);
 
 ALTER TABLE notification_source_unit
@@ -101,7 +107,7 @@ CREATE TABLE notification
     start_time  TIMESTAMP(0)        NOT NULL,
     finish_time TIMESTAMP(0),
     status      notification_status NOT NULL,
-    is_read     BOOLEAN             NOT NULL DEFAULT false,
+    is_read     BOOLEAN             NOT NULL DEFAULT FALSE,
     create_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now()),
     update_time TIMESTAMP(0)                 DEFAULT timezone('UTC', now())
 );

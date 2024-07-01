@@ -12,15 +12,15 @@ import java.time.ZoneId;
 public class Unit implements AbstractDto<Long> {
     Long id;
     String name;
-    ZoneId ownerTZ;
+    ZoneId zoneId;
 
     @Builder
     @JsonCreator
     public Unit(@JsonProperty("id") final Long id,
                 @JsonProperty("name") final String name,
-                @JsonProperty("ownerTZ") final ZoneId ownerTZ) {
+                @JsonProperty("zoneId") final ZoneId zoneId) {
         this.id = id;
         this.name = name;
-        this.ownerTZ = ownerTZ;
+        this.zoneId = zoneId;
     }
 }

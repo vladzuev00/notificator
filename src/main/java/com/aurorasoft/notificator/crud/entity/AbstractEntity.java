@@ -10,7 +10,7 @@ public abstract class AbstractEntity<ID> implements by.nhorushko.crudgeneric.v2.
 
     @Override
     @SuppressWarnings({"unchecked", "EqualsWhichDoesntCheckParameterClass"})
-    public final boolean equals(final Object otherObject) {
+    public final boolean equals(Object otherObject) {
         if (this == otherObject) {
             return true;
         }
@@ -20,7 +20,7 @@ public abstract class AbstractEntity<ID> implements by.nhorushko.crudgeneric.v2.
         if (Hibernate.getClass(this) != Hibernate.getClass(otherObject)) {
             return false;
         }
-        final AbstractEntity<ID> other = (AbstractEntity<ID>) otherObject;
+        AbstractEntity<ID> other = (AbstractEntity<ID>) otherObject;
         return Objects.equals(getId(), other.getId());
     }
 

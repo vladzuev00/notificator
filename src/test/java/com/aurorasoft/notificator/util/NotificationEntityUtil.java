@@ -3,6 +3,7 @@ package com.aurorasoft.notificator.util;
 import com.aurorasoft.notificator.crud.entity.NotificationEntity;
 import lombok.experimental.UtilityClass;
 
+import static org.hibernate.Hibernate.isInitialized;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
@@ -18,5 +19,13 @@ public final class NotificationEntityUtil {
         assertSame(expected.getStatus(), actual.getStatus());
         assertEquals(expected.isRead(), actual.isRead());
         assertEquals(expected.getCreateTime(), actual.getCreateTime());
+    }
+
+    public static boolean isUnitFetched(final NotificationEntity notification) {
+        return isInitialized(notification.getUnit());
+    }
+
+    public static boolean isSourceFetched(final NotificationEntity notification) {
+        return isInitialized(notification.getSource());
     }
 }

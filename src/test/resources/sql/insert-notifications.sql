@@ -4,7 +4,7 @@ VALUES (1, 'Включение Зажигания', 'зажигание вклю
         '{"min": 1, "action": "within", "sensorName": "Зажигание"}', '2021-02-09 14:13:19', '2021-02-09 14:13:19',
         'notification', 120);
 
-INSERT INTO notification_source_unit (notification_source_id, unit_id)
+INSERT INTO notification_source_unit (source_id, unit_id)
 VALUES (1, 7);
 
 INSERT INTO notification
@@ -17,4 +17,4 @@ VALUES (1, 1, 7, '2021-02-18 14:00:00', '2021-02-18 14:10:00', FALSE, '2021-02-1
         'COMPLETED'),
        (4, 1, 7, '2021-02-18 14:51:00', '2021-02-18 14:52:00', FALSE, '2021-02-18 14:40:00', '2021-02-18 14:40:00',
         'CANCELLED'),
-       (5, 1, 7, '2021-02-18 15:00:00', null, FALSE, '2021-02-18 15:00:00', '2021-02-18 15:00:00', 'ACTIVE');
+       (5, 1, 7, '2021-02-18 15:00:00', NULL, FALSE, '2021-02-18 15:00:00', '2021-02-18 15:00:00', 'ACTIVE');
