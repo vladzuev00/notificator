@@ -15,3 +15,9 @@ spring:
   sql:
     init:
       mode: always
+
+replication:
+  consume:
+    geofence:
+      pipeline-id: geofence-replication-consume-pipeline
+      topic-name: sync-geofence
