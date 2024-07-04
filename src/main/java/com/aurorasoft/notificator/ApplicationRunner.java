@@ -1,12 +1,12 @@
 package com.aurorasoft.notificator;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 import static org.springframework.boot.SpringApplication.run;
 
 @SpringBootApplication
-@EnableConfigurationProperties
+@ConfigurationPropertiesScan
 public class ApplicationRunner {
 
     public static void main(String... args) {
