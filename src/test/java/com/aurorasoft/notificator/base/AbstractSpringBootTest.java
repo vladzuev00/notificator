@@ -1,5 +1,7 @@
 package com.aurorasoft.notificator.base;
 
+import com.aurorasoft.notificator.base.containerinitializer.DataBaseContainerInitializer;
+import com.aurorasoft.notificator.base.containerinitializer.KafkaContainerInitializer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +20,7 @@ import static java.util.TimeZone.setDefault;
 @Transactional
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ContextConfiguration(initializers = DBContainerInitializer.class)
+@ContextConfiguration(initializers = {DataBaseContainerInitializer.class, KafkaContainerInitializer.class})
 public abstract class AbstractSpringBootTest {
 
     @PersistenceContext
@@ -28,5 +30,4 @@ public abstract class AbstractSpringBootTest {
     public static void setDefaultTimeZone() {
         setDefault(getTimeZone(UTC));
     }
-
 }

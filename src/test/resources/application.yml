@@ -18,6 +18,5 @@ spring:
 
 replication:
   consume:
-    geofence:
-      pipeline-id: geofence-replication-consume-pipeline
-      topic-name: sync-geofence
+    topic:
+      geofence: sync-geofence
