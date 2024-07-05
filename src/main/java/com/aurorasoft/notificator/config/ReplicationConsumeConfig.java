@@ -1,5 +1,6 @@
 package com.aurorasoft.notificator.config;
 
+import by.aurorasoft.replicator.annotation.EnableReplication;
 import by.aurorasoft.replicator.model.pipeline.ReplicationConsumePipeline;
 import com.aurorasoft.notificator.crud.entity.GeofenceEntity;
 import com.aurorasoft.notificator.crud.repository.GeofenceRepository;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import static org.apache.kafka.common.serialization.Serdes.Long;
 
 @Configuration
+@EnableReplication
 public class ReplicationConsumeConfig {
 
     @Bean
