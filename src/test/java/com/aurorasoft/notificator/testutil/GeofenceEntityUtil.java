@@ -1,4 +1,4 @@
-package com.aurorasoft.notificator.util;
+package com.aurorasoft.notificator.testutil;
 
 import com.aurorasoft.notificator.crud.entity.GeofenceEntity;
 import lombok.experimental.UtilityClass;
