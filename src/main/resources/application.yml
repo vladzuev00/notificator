@@ -10,11 +10,16 @@ spring:
         generate_statistics: true
         jdbc:
           batch_size: 500
-    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+
+#TODO: remove port
+server:
+  port: 8081
 
 replication:
   consume:
-    geofence:
-      pipeline-id: geofence-replication-consume-pipeline
-      topic-name: sync-geofence
+    topic:
+      geofence: geofence-sync

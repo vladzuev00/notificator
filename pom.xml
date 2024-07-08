@@ -99,7 +99,7 @@
 
         <dependency>
             <groupId>by.aurorasoft</groupId>
-            <artifactId>replication</artifactId>
+            <artifactId>replicator</artifactId>
             <version>1.0</version>
         </dependency>
 
