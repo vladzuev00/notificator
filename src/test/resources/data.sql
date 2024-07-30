@@ -1,6 +1,12 @@
-INSERT INTO unit(id, name, color, status)
-VALUES (255, 'Mercedes АР 6575-7', 'D73816', 'ACTIVE'),
-       (256, 'Сitroen Jumper AM 4113-1', '8F3522', 'DISABLED'),
-       (257, '2 TAX 5336', 'BF5F4A', 'ACTIVE'),
-       (258, 'MAN TGX AM 6088-7', '47221A', 'ACTIVE'),
-       (259, 'MAN TGX AE 7373-7', 'CF9B90', 'ACTIVE');
+INSERT INTO time_zone
+VALUES (255, 'Europe/London'),
+       (256, 'Europe/Berlin'),
+       (257, 'Europe/Vilnius'),
+       (258, 'Europe/Minsk'),
+       (259, 'Europe/Kiev'),
+       (260, 'Europe/Moscow'),
+       (261, 'Europe/Samara'),
+       (262, 'Asia/Novosibirsk'),
+       (263, 'Asia/Irkutsk'),
+       (264, 'Asia/Yakutsk'),
+       (265, 'Asia/Vladivostok');

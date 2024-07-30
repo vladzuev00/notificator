@@ -3,39 +3,41 @@ package com.aurorasoft.notificator.crud.entity;
 import com.aurorasoft.notificator.base.AbstractSpringBootTest;
 import lombok.Getter;
 import lombok.Setter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-//TODO: do commented tests with UnitEntity
 public final class AbstractEntityTest extends AbstractSpringBootTest {
 
     @Test
     public void entitiesShouldBeEqual() {
-        AbstractEntity<Long> firstGivenEntity = createEntity(255L);
-        AbstractEntity<Long> secondGivenEntity = createEntity(255L);
+        Long givenEntityId = 255L;
+        AbstractEntity<Long> firstGivenEntity = createEntity(givenEntityId);
+        AbstractEntity<Long> secondGivenEntity = createEntity(givenEntityId);
 
         boolean actual = firstGivenEntity.equals(secondGivenEntity);
         assertTrue(actual);
     }
 
     @Test
-    @SuppressWarnings("EqualsWithItself")
     public void sameEntitiesShouldBeEqual() {
         AbstractEntity<Long> givenEntity = createEntity(256L);
 
-        boolean actual = givenEntity.equals(givenEntity);
+        @SuppressWarnings("EqualsWithItself") boolean actual = givenEntity.equals(givenEntity);
         assertTrue(actual);
     }
 
-    //    @Test
-//    public void notProxyEntityShouldBeEqualProxyEntity() {
-//        final Entity<Long> firstGivenEntity = createTracker(255L);
-//        final Entity<Long> secondGivenEntity = entityManager.find(TrackerEntity.class, 255L);
-//
-//        final boolean actual = firstGivenEntity.equals(secondGivenEntity);
-//        assertTrue(actual);
-//    }
+    @Test
+    public void notProxyEntityShouldBeEqualProxyEntity() {
+        Long givenEntityId = 255L;
+        AbstractEntity<Long> firstGivenEntity = TimeZoneEntity.builder()
+                .id(givenEntityId)
+                .build();
+        AbstractEntity<Long> secondGivenEntity = entityManager.find(TimeZoneEntity.class, givenEntityId);
+
+        boolean actual = firstGivenEntity.equals(secondGivenEntity);
+        assertTrue(actual);
+    }
 
     @Test
     public void entitiesShouldNotBeEqualBecauseOfOtherEntityIsNull() {
@@ -46,14 +48,15 @@ public final class AbstractEntityTest extends AbstractSpringBootTest {
         assertFalse(actual);
     }
 
-    //    @Test
-//    public void entitiesShouldNotBeEqualBecauseOfDifferentNotProxyTypes() {
-//        final Entity<Long> firstGivenEntity = createEntity(255L);
-//        final Entity<Long> secondGivenEntity = entityManager.find(TrackerEntity.class, 255L);
-//
-//        final boolean actual = firstGivenEntity.equals(secondGivenEntity);
-//        assertFalse(actual);
-//    }
+    @Test
+    public void entitiesShouldNotBeEqualBecauseOfDifferentNotProxyTypes() {
+        Long givenEntityId = 255L;
+        AbstractEntity<Long> firstGivenEntity = createEntity(givenEntityId);
+        AbstractEntity<Long> secondGivenEntity = entityManager.find(TimeZoneEntity.class, givenEntityId);
+
+        boolean actual = firstGivenEntity.equals(secondGivenEntity);
+        assertFalse(actual);
+    }
 
     @Test
     public void entitiesShouldNotBeEqual() {
@@ -74,18 +77,11 @@ public final class AbstractEntityTest extends AbstractSpringBootTest {
         assertEquals(expected, actual);
     }
 
-    private static AbstractEntity<Long> createEntity(Long id) {
+    private AbstractEntity<Long> createEntity(Long id) {
         AbstractEntity<Long> entity = new TestEntity();
         entity.setId(id);
         return entity;
     }
-
-//    @SuppressWarnings("SameParameterValue")
-//    private static TrackerEntity createTracker(final Long id) {
-//        return TrackerEntity.builder()
-//                .id(id)
-//                .build();
-//    }
 
     @Setter
     @Getter
