@@ -31,39 +31,35 @@ public final class GeofenceRepositoryTest extends AbstractSpringBootTest {
         assertTrue(optionalActual.isPresent());
 
         GeofenceEntity actual = optionalActual.get();
-        GeofenceEntity expected = GeofenceEntity.builder()
-                .id(givenId)
-                .geometry(
-                        geometryFactory.createPolygon(
-                                new CoordinateXY[]{
-                                        new CoordinateXY(0, 3),
-                                        new CoordinateXY(10, 0),
-                                        new CoordinateXY(10, 10),
-                                        new CoordinateXY(0, 10),
-                                        new CoordinateXY(0, 3)
-                                }
-                        )
+        GeofenceEntity expected = new GeofenceEntity(
+                givenId,
+                geometryFactory.createPolygon(
+                        new CoordinateXY[]{
+                                new CoordinateXY(0, 3),
+                                new CoordinateXY(10, 0),
+                                new CoordinateXY(10, 10),
+                                new CoordinateXY(0, 10),
+                                new CoordinateXY(0, 3)
+                        }
                 )
-                .build();
+        );
         checkEquals(expected, actual);
     }
 
     @Test
     public void geofenceShouldBeSaved() {
-        GeofenceEntity givenGeofence = GeofenceEntity.builder()
-                .id(255L)
-                .geometry(
-                        geometryFactory.createPolygon(
-                                new CoordinateXY[]{
-                                        new CoordinateXY(0, 3),
-                                        new CoordinateXY(10, 0),
-                                        new CoordinateXY(10, 10),
-                                        new CoordinateXY(0, 10),
-                                        new CoordinateXY(0, 3)
-                                }
-                        )
+        GeofenceEntity givenGeofence = new GeofenceEntity(
+                255L,
+                geometryFactory.createPolygon(
+                        new CoordinateXY[]{
+                                new CoordinateXY(0, 3),
+                                new CoordinateXY(10, 0),
+                                new CoordinateXY(10, 10),
+                                new CoordinateXY(0, 10),
+                                new CoordinateXY(0, 3)
+                        }
                 )
-                .build();
+        );
 
         repository.save(givenGeofence);
     }
