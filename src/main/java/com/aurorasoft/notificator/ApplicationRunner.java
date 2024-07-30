@@ -9,7 +9,7 @@ import static org.springframework.boot.SpringApplication.run;
 @ConfigurationPropertiesScan
 public class ApplicationRunner {
 
-    public static void main(String... args) {
+    public static void main(String[] args) {
         run(ApplicationRunner.class, args);
     }
 }
