@@ -123,7 +123,7 @@ ALTER TABLE notification
 
 CREATE TABLE telegram
 (
-    id                       SERIAL PRIMARY KEY,
+    id                       INTEGER PRIMARY KEY,
     user_id                  INTEGER      NOT NULL,
     telegram_chat_id         BIGINT       NOT NULL,
     telegram_user_id         BIGINT       NOT NULL,
