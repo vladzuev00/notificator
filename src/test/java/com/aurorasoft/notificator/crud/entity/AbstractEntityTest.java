@@ -67,7 +67,6 @@ public final class AbstractEntityTest extends AbstractSpringBootTest {
         assertFalse(actual);
     }
 
-
     @Test
     public void hashCodeShouldBeFound() {
         AbstractEntity<Long> givenEntity = createEntity(255L);
