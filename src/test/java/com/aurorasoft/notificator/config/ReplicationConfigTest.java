@@ -44,7 +44,9 @@ public final class ReplicationConfigTest extends AbstractSpringBootTest {
         Class<?> expectedDeserializerType = LongDeserializer.class;
         assertSame(expectedDeserializerType, actualDeserializerType);
 
-        String actualTypeName = geofencePipeline.getReplicationTypeReference().getType().getTypeName();
+        String actualTypeName = geofencePipeline.getReplicationTypeReference()
+                .getType()
+                .getTypeName();
         String expectedTypeName = "by.aurorasoft.replicator.model.replication.consumed.ConsumedReplication<"
                 + "com.aurorasoft.notificator.crud.entity.GeofenceEntity, "
                 + "java.lang.Long"
