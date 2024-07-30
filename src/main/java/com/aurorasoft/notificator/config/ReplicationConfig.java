@@ -3,7 +3,9 @@ package com.aurorasoft.notificator.config;
 import by.aurorasoft.replicator.annotation.EnableReplication;
 import by.aurorasoft.replicator.model.pipeline.ReplicationConsumePipeline;
 import com.aurorasoft.notificator.crud.entity.GeofenceEntity;
+import com.aurorasoft.notificator.crud.entity.TimeZoneEntity;
 import com.aurorasoft.notificator.crud.repository.GeofenceRepository;
+import com.aurorasoft.notificator.crud.repository.TimeZoneRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +24,18 @@ public class ReplicationConfig {
     @Bean
     public ReplicationConsumePipeline<GeofenceEntity, Long> geofencePipeline(@Value("${replication.consume.topic.geofence}") String topic,
                                                                              GeofenceRepository repository) {
+        return new ReplicationConsumePipeline<>(
+                topic,
+                longDeserializer(),
+                new TypeReference<>() {
+                },
+                repository
+        );
+    }
+
+    @Bean
+    public ReplicationConsumePipeline<TimeZoneEntity, Long> timeZonePipeline(@Value("${replication.consume.topic.time-zone}") String topic,
+                                                                             TimeZoneRepository repository) {
         return new ReplicationConsumePipeline<>(
                 topic,
                 longDeserializer(),
