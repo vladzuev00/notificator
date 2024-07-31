@@ -1,9 +1,6 @@
 package com.aurorasoft.notificator.crud.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
@@ -24,6 +21,9 @@ public class TelegramChatEntity extends AbstractEntity<Long> {
 
     @Column(name = "user_id")
     private int userId;
+
+    @Embedded
+    TelegramUserEntity telegramUser;
 
     @Column(name = "activated")
     boolean activated;
