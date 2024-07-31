@@ -21,3 +21,4 @@ replication:
     topic:
       geofence: geofence-sync
       time-zone: time-zone-sync
+      telegram-chat: telegram-chat-sync
