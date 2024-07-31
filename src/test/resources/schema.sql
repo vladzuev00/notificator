@@ -1,5 +1,4 @@
-CREATE
-EXTENSION IF NOT EXISTS Postgis;
+CREATE EXTENSION IF NOT EXISTS Postgis;
 
 CREATE TABLE time_zone
 (
@@ -49,10 +48,10 @@ CREATE TYPE unit_status AS ENUM ('ACTIVE', 'DISABLED');
 CREATE TABLE unit
 (
     id      INTEGER PRIMARY KEY,
-    name    VARCHAR     NOT NULL,
-    color   VARCHAR(7)  NOT NULL,
-    status  unit_status NOT NULL,
-    deleted BOOLEAN     NOT NULL DEFAULT FALSE
+    name    VARCHAR(256) NOT NULL,
+    color   VARCHAR(7)   NOT NULL,
+    status  unit_status  NOT NULL,
+    deleted BOOLEAN      NOT NULL
 );
 
 CREATE TABLE notification_source_unit
