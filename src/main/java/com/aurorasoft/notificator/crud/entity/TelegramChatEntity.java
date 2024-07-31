@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.time.Instant;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -20,5 +22,12 @@ public class TelegramChatEntity extends AbstractEntity<Long> {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "user_id")
+    private int userId;
 
+    @Column(name = "activated")
+    boolean activated;
+
+    @Column(name = "created")
+    Instant created;
 }

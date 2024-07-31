@@ -18,7 +18,7 @@ public class TelegramUserEntity extends AbstractEntity<Long> {
     private Long id;
 
     @Column(name = "telegram_chat_id")
-    private Long chatId;
+    private long chatId;
 
     @Column(name = "telegram_user_first_name")
     private String firstName;
