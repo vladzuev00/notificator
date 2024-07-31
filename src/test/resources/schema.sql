@@ -1,4 +1,5 @@
-CREATE EXTENSION IF NOT EXISTS Postgis;
+CREATE
+EXTENSION IF NOT EXISTS Postgis;
 
 CREATE TABLE time_zone
 (
@@ -130,9 +131,9 @@ CREATE TABLE telegram
     telegram_user_first_name VARCHAR(50),
     telegram_user_last_name  VARCHAR(50),
     telegram_username        VARCHAR(50),
-    activated                BOOLEAN      NOT NULL DEFAULT FALSE,
-    language                 VARCHAR(3)   NOT NULL DEFAULT 'ru',
-    created                  TIMESTAMP(0) NOT NULL DEFAULT timezone('UTC', now())
+    activated                BOOLEAN      NOT NULL,
+    language                 VARCHAR(3)   NOT NULL,
+    created                  TIMESTAMP(0) NOT NULL
 );
 
 CREATE TABLE notification_source_telegram
