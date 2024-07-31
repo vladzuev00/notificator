@@ -3,7 +3,7 @@ CREATE EXTENSION IF NOT EXISTS Postgis;
 CREATE TABLE time_zone
 (
     id   INTEGER PRIMARY KEY,
-    name VARCHAR NOT NULL UNIQUE
+    name VARCHAR(256) NOT NULL UNIQUE
 );
 
 CREATE TYPE notification_enabling_state AS ENUM ('ENABLE', 'DISABLE');
@@ -130,7 +130,7 @@ CREATE TABLE telegram
     telegram_user_first_name VARCHAR(50),
     telegram_user_last_name  VARCHAR(50),
     telegram_username        VARCHAR(50),
-    is_activated             BOOLEAN      NOT NULL DEFAULT 'false',
+    activated                BOOLEAN      NOT NULL DEFAULT FALSE,
     language                 VARCHAR(3)   NOT NULL DEFAULT 'ru',
     created                  TIMESTAMP(0) NOT NULL DEFAULT timezone('UTC', now())
 );
