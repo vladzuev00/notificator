@@ -2,15 +2,13 @@ package com.aurorasoft.notificator.crud.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
+@Builder
 @Embeddable
 public class TelegramUserEntity extends AbstractEntity<Long> {
 
