@@ -10,7 +10,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Optional;
 
-import static com.aurorasoft.notificator.testutil.GeofenceEntityUtil.checkEquals;
+import static com.aurorasoft.notificator.testutil.GeofenceEntityUtil.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //TODO: count queries
@@ -43,7 +43,7 @@ public final class GeofenceRepositoryTest extends AbstractSpringBootTest {
                         }
                 )
         );
-        checkEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test

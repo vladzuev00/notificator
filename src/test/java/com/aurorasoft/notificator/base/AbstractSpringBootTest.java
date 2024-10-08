@@ -4,7 +4,6 @@ import com.aurorasoft.notificator.base.containerinitializer.DataBaseContainerIni
 import com.aurorasoft.notificator.base.containerinitializer.KafkaContainerInitializer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,7 +13,6 @@ import static java.time.ZoneOffset.UTC;
 import static java.util.TimeZone.getTimeZone;
 import static java.util.TimeZone.setDefault;
 
-@Slf4j
 @Transactional
 @SpringBootTest
 @ContextConfiguration(initializers = {DataBaseContainerInitializer.class, KafkaContainerInitializer.class})
