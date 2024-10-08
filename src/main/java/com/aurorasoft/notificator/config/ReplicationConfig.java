@@ -1,7 +1,7 @@
 package com.aurorasoft.notificator.config;
 
 import by.aurorasoft.replicator.annotation.EnableReplication;
-import by.aurorasoft.replicator.model.pipeline.ReplicationConsumePipeline;
+import by.aurorasoft.replicator.model.setting.ReplicationConsumeSetting;
 import com.aurorasoft.notificator.crud.entity.GeofenceEntity;
 import com.aurorasoft.notificator.crud.entity.TelegramChatEntity;
 import com.aurorasoft.notificator.crud.entity.TimeZoneEntity;
@@ -24,38 +24,42 @@ public class ReplicationConfig {
     }
 
     @Bean
-    public ReplicationConsumePipeline<GeofenceEntity, Long> geofencePipeline(@Value("${replication.consume.topic.geofence}") String topic,
-                                                                             GeofenceRepository repository) {
-        return new ReplicationConsumePipeline<>(
+    public ReplicationConsumeSetting<GeofenceEntity, Long> geofenceReplicationConsumeSetting(
+            @Value("${replication.consume.topic.geofence}") String topic,
+            GeofenceRepository repository
+    ) {
+        return new ReplicationConsumeSetting<>(
                 topic,
+                repository,
                 longDeserializer(),
                 new TypeReference<>() {
-                },
-                repository
+                }
         );
     }
 
-    @Bean
-    public ReplicationConsumePipeline<TimeZoneEntity, Long> timeZonePipeline(@Value("${replication.consume.topic.time-zone}") String topic,
-                                                                             TimeZoneRepository repository) {
-        return new ReplicationConsumePipeline<>(
-                topic,
-                longDeserializer(),
-                new TypeReference<>() {
-                },
-                repository
-        );
-    }
-
-    @Bean
-    public ReplicationConsumePipeline<TelegramChatEntity, Long> telegramChatPipeline(@Value("${replication.consume.topic.telegram-chat}") String topic,
-                                                                                     TelegramChatRepository repository) {
-        return new ReplicationConsumePipeline<>(
-                topic,
-                longDeserializer(),
-                new TypeReference<>() {
-                },
-                repository
-        );
-    }
+//    @Bean
+//    public ReplicationConsumeSetting<TimeZoneEntity, Long> timeZoneReplicationConsumeSetting(
+//            @Value("${replication.consume.topic.time-zone}") String topic,
+//            TimeZoneRepository repository
+//    ) {
+//        return new ReplicationConsumeSetting<>(
+//                topic,
+//                repository,
+//                longDeserializer(),
+//                new TypeReference<>() {
+//                }
+//        );
+//    }
+//
+//    @Bean
+//    public ReplicationConsumePipeline<TelegramChatEntity, Long> telegramChatPipeline(@Value("${replication.consume.topic.telegram-chat}") String topic,
+//                                                                                     TelegramChatRepository repository) {
+//        return new ReplicationConsumePipeline<>(
+//                topic,
+//                longDeserializer(),
+//                new TypeReference<>() {
+//                },
+//                repository
+//        );
+//    }
 }
