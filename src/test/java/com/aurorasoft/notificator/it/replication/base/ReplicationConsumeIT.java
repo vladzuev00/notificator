@@ -42,7 +42,7 @@ public abstract class ReplicationConsumeIT<E extends AbstractEntity<ID>, ID> ext
     }
 
     @Test
-    public void testSave() {
+    public final void testSave() {
         sendSaveAwaitingDelivery();
         Optional<E> optionalActual = findActualEntity();
         assertTrue(optionalActual.isPresent());
@@ -52,7 +52,7 @@ public abstract class ReplicationConsumeIT<E extends AbstractEntity<ID>, ID> ext
     }
 
     @Test
-    public void testDelete() {
+    public final void testDelete() {
         repository.save(getEntity());
         sendDeleteAwaitingDelivery();
         Optional<E> optionalActual = findActualEntity();
@@ -103,7 +103,7 @@ public abstract class ReplicationConsumeIT<E extends AbstractEntity<ID>, ID> ext
     protected static abstract class ReplicationDeliveryBarrier {
         private static final long TIMEOUT_MS = 20000;
 
-        private volatile CountDownLatch latch;
+        private volatile CountDownLatch latch = new CountDownLatch(0);
 
         public final void expect(int replicationCount) {
             latch = new CountDownLatch(replicationCount);

@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-public class GeofenceReplicationConsumeIT extends ReplicationConsumeIT<GeofenceEntity, Long> {
+public final class GeofenceReplicationConsumeIT extends ReplicationConsumeIT<GeofenceEntity, Long> {
     private final GeometryFactory geometryFactory;
 
     @Autowired
@@ -76,7 +76,7 @@ public class GeofenceReplicationConsumeIT extends ReplicationConsumeIT<GeofenceE
                         ]
                       ]
                     },
-                    "id": 1
+                    "id": 255
                   }
                 }""";
     }
