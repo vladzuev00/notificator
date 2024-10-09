@@ -30,9 +30,7 @@ public final class AbstractEntityTest extends AbstractSpringBootTest {
     @Test
     public void notProxyEntityShouldBeEqualProxyEntity() {
         Long givenEntityId = 255L;
-        AbstractEntity<Long> firstGivenEntity = TimeZoneEntity.builder()
-                .id(givenEntityId)
-                .build();
+        AbstractEntity<Long> firstGivenEntity = TimeZoneEntity.builder().id(givenEntityId).build();
         AbstractEntity<Long> secondGivenEntity = entityManager.find(TimeZoneEntity.class, givenEntityId);
 
         boolean actual = firstGivenEntity.equals(secondGivenEntity);
