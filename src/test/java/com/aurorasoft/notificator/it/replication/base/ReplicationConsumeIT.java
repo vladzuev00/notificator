@@ -109,7 +109,7 @@ public abstract class ReplicationConsumeIT<E extends AbstractEntity<ID>, ID> ext
             latch = new CountDownLatch(replicationCount);
         }
 
-        public void onFinishRepositoryMethod() {
+        public void onAfterRepositoryMethod() {
             latch.countDown();
         }
 

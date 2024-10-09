@@ -100,8 +100,8 @@ public final class GeofenceReplicationConsumeIT extends ReplicationConsumeIT<Geo
     public static class GeofenceReplicationDeliveryBarrier extends ReplicationDeliveryBarrier {
 
         @After("geofenceRepository()")
-        public void onFinishRepositoryMethod() {
-            super.onFinishRepositoryMethod();
+        public void onAfterRepositoryMethod() {
+            super.onAfterRepositoryMethod();
         }
 
         @Pointcut("target(com.aurorasoft.notificator.crud.repository.GeofenceRepository)")
