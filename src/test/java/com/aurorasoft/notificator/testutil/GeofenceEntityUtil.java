@@ -4,8 +4,6 @@ import com.aurorasoft.notificator.crud.entity.GeofenceEntity;
 import lombok.experimental.UtilityClass;
 import org.junit.jupiter.api.Assertions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @UtilityClass
 public final class GeofenceEntityUtil {
 

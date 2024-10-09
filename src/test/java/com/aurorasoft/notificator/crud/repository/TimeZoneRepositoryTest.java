@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
-import static com.aurorasoft.notificator.testutil.TimeZoneEntityUtil.checkEquals;
+import static com.aurorasoft.notificator.testutil.TimeZoneEntityUtil.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //TODO: count queries
@@ -25,7 +25,7 @@ public final class TimeZoneRepositoryTest extends AbstractSpringBootTest {
 
         TimeZoneEntity actual = optionalActual.get();
         TimeZoneEntity expected = new TimeZoneEntity(givenId, "Europe/London");
-        checkEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test

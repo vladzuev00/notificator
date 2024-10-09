@@ -15,10 +15,6 @@ spring:
   kafka:
     bootstrap-servers: 127.0.0.1:9092
 
-#    TODO remove port
-server:
-  port: 8081
-
 replication:
   consume:
     topic:
