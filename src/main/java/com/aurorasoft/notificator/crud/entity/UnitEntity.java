@@ -1,11 +1,15 @@
 package com.aurorasoft.notificator.crud.entity;
 
 import com.aurorasoft.notificator.model.UnitStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
+
+import static jakarta.persistence.EnumType.STRING;
+import static org.hibernate.type.SqlTypes.NAMED_ENUM;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +31,8 @@ public class UnitEntity extends AbstractEntity<Long> {
     @Column(name = "color")
     private String color;
 
+    @Enumerated(STRING)
     @Column(name = "status")
+    @JdbcTypeCode(NAMED_ENUM)
     private UnitStatus status;
 }

@@ -1,4 +1,4 @@
-package com.aurorasoft.notificator.it.replication.base;
+package com.aurorasoft.notificator.it.replication;
 
 import com.aurorasoft.notificator.base.AbstractSpringBootTest;
 import com.aurorasoft.notificator.crud.entity.AbstractEntity;

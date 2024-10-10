@@ -1,8 +1,7 @@
-package com.aurorasoft.notificator.it.replication.geofence;
+package com.aurorasoft.notificator.it.replication;
 
 import com.aurorasoft.notificator.crud.entity.GeofenceEntity;
 import com.aurorasoft.notificator.crud.repository.GeofenceRepository;
-import com.aurorasoft.notificator.it.replication.base.ReplicationConsumeIT;
 import com.aurorasoft.notificator.testutil.GeofenceEntityUtil;
 import org.apache.kafka.common.serialization.LongSerializer;
 import org.aspectj.lang.annotation.After;

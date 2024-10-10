@@ -50,8 +50,7 @@ CREATE TABLE unit
     id      INTEGER PRIMARY KEY,
     name    VARCHAR(256) NOT NULL,
     color   VARCHAR(7)   NOT NULL,
-    status  unit_status  NOT NULL,
-    deleted BOOLEAN      NOT NULL
+    status  unit_status  NOT NULL
 );
 
 CREATE TABLE notification_source_unit
