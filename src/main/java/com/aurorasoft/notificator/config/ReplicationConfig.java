@@ -3,7 +3,9 @@ package com.aurorasoft.notificator.config;
 import by.aurorasoft.replicator.annotation.EnableReplication;
 import by.aurorasoft.replicator.model.setting.ReplicationConsumeSetting;
 import com.aurorasoft.notificator.crud.entity.GeofenceEntity;
+import com.aurorasoft.notificator.crud.entity.UnitEntity;
 import com.aurorasoft.notificator.crud.repository.GeofenceRepository;
+import com.aurorasoft.notificator.crud.repository.UnitRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +25,20 @@ public class ReplicationConfig {
     public ReplicationConsumeSetting<GeofenceEntity, Long> geofenceReplicationConsumeSetting(
             @Value("${replication.consume.topic.geofence}") String topic,
             GeofenceRepository repository
+    ) {
+        return new ReplicationConsumeSetting<>(
+                topic,
+                repository,
+                longDeserializer(),
+                new TypeReference<>() {
+                }
+        );
+    }
+
+    @Bean
+    public ReplicationConsumeSetting<UnitEntity, Long> unitReplicationConsumeSetting(
+            @Value("${replication.consume.topic.unit}") String topic,
+            UnitRepository repository
     ) {
         return new ReplicationConsumeSetting<>(
                 topic,

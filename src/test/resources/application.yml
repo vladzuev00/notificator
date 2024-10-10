@@ -20,5 +20,6 @@ replication:
   consume:
     topic:
       geofence: geofence-sync
+      unit: unit-sync
       time-zone: time-zone-sync
       telegram-chat: telegram-chat-sync
